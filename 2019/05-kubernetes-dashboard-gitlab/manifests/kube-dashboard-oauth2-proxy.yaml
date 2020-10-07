@@ -17,13 +17,14 @@ spec:
     spec:
       containers:
       - args:
-        - -provider=gitlab
-        - -login-url=##LOGIN_URL##
-        - -redeem-url=##REDEEM_URL##
-        - -validate-url=##VALIDATE_URL##
-        - -email-domain=*
-        - -upstream=file:///dev/null
-        - -http-address=0.0.0.0:4180
+        - --provider=gitlab
+        - --login-url=##LOGIN_URL##
+        - --redeem-url=##REDEEM_URL##
+        - --validate-url=##VALIDATE_URL##
+        - --email-domain=*
+        - --upstream=file:///dev/null
+        - --http-address=0.0.0.0:4180
+        command: ["oauth2_proxy"]
         # Register a new application
         # https://github.com/settings/applications/new
         env:
@@ -34,7 +35,7 @@ spec:
         # python -c 'import os,base64; print base64.b64encode(os.urandom(16))'
         - name: OAUTH2_PROXY_COOKIE_SECRET
           value: ##OAUTH2_PROXY_COOKIE_SECRET##
-        image: docker.io/colemickens/oauth2_proxy:latest
+        image: docker.io/dcheremnov/oauth2_proxy:latest
         imagePullPolicy: Always
         name: oauth2-proxy
         readinessProbe:
