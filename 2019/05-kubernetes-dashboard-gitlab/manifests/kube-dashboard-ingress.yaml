@@ -45,7 +45,7 @@ spec:
           service:
             name: oauth2-proxy
             port:
-              number: 80
+              number: 4180
   tls:
   - hosts:
       - ##DASHBORD_URL##
